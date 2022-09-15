@@ -74,7 +74,7 @@ class Sprite {
 		this.frameHold = 5;
 		this.frameElapsed = 0;
 		this.lastState = "Idle";
-        this.animate = true
+		this.animate = true;
 		this.images = {
 			Idle_right: {
 				image: new Image(),
@@ -116,7 +116,6 @@ class Sprite {
 			this.images[new String(this.images[i].state) + "_" + "left"].image.src =
 				this.images[new String(this.images[i].state) + "_" + "left"].imageSrc;
 		}
-        console.log(this.images)
 	}
 
 	draw(state = "Idle", enemy) {
@@ -127,9 +126,9 @@ class Sprite {
 			noFrame = 2;
 		} else if (state == "Run") {
 			noFrame = this.name == "samuraiMack" ? 8 : 8;
-		} else if(state == "Death") {
-            noFrame = this.name == "samuraiMack" ? 6 : 7
-        } else {
+		} else if (state == "Death") {
+			noFrame = this.name == "samuraiMack" ? 6 : 7;
+		} else {
 			noFrame = this.name == "samuraiMack" ? 8 : 4;
 		}
 		var image = this.images[state + "_" + this.direction].image;
@@ -156,23 +155,31 @@ class Sprite {
 		);
 		this.frameElapsed++;
 		if (this.frameElapsed % this.frameHold === 0) {
-			if (this.direction === "right" && this.frame.x < noFrame - 1 && this.animate) {
+			if (
+				this.direction === "right" &&
+				this.frame.x < noFrame - 1 &&
+				this.animate
+			) {
 				this.frame.x++;
-			} else if (this.direction === "left" && this.frame.x > 0 && this.animate) {
+			} else if (
+				this.direction === "left" &&
+				this.frame.x > 0 &&
+				this.animate
+			) {
 				this.frame.x--;
 			} else {
 				if (this.direction === "right") {
 					this.frame.x = 0;
-                    if(this.lastState == "Death") {
-                        this.frame.x = noFrame - 1
-                        this.animate = false
-                    }
+					if (this.lastState == "Death") {
+						this.frame.x = noFrame - 1;
+						this.animate = false;
+					}
 				} else {
 					this.frame.x = noFrame - 1;
-                    if(this.lastState == "Death") {
-                        this.frame.x = 0
-                        this.animate = false
-                    }
+					if (this.lastState == "Death") {
+						this.frame.x = 0;
+						this.animate = false;
+					}
 				}
 				if (this.isAttack) {
 					this.isAttack = false;
@@ -212,7 +219,7 @@ class Sprite {
 								"px";
 						} else {
 							e.style.width = 0 + "px";
-							enemy.draw("Death")
+							enemy.draw("Death");
 							gameOverF(
 								`Player ${
 									this.name == "samuraiMack" ? 1 : 2
@@ -240,12 +247,12 @@ class Sprite {
 			!keys[32] &&
 			this.jump == "endJump" &&
 			!this.isAttack &&
-            this.lastState != "Death"
+			this.lastState != "Death"
 		) {
 			this.draw();
-		} else if(this.lastState == "Death"){
-            this.draw("Death")
-        }
+		} else if (this.lastState == "Death") {
+			this.draw("Death");
+		}
 		var x = this.velocity.x;
 		var y = this.velocity.y;
 		if (keys[87] && !this.isAttack) {
@@ -329,12 +336,12 @@ enemy.update = () => {
 		!keys[13] &&
 		enemy.jump == "endJump" &&
 		!enemy.isAttack &&
-        enemy.lastState != "Death"
+		enemy.lastState != "Death"
 	) {
 		enemy.draw();
 	} else if (enemy.lastState == "Death") {
-        enemy.draw("Death")
-    }
+		enemy.draw("Death");
+	}
 	var x = enemy.velocity.x;
 	var y = enemy.velocity.y;
 	if (keys[38] && !enemy.isAttack) {
@@ -489,19 +496,19 @@ function restart() {
 	});
 
 	enemy.update = () => {
-        if (
-            !keys[38] &&
-            !keys[39] &&
-            !keys[37] &&
-            !keys[13] &&
-            enemy.jump == "endJump" &&
-            !enemy.isAttack &&
-            enemy.lastState != "Death"
-        ) {
-            enemy.draw();
-        } else if (enemy.lastState == "Death") {
-            enemy.draw("Death")
-        }
+		if (
+			!keys[38] &&
+			!keys[39] &&
+			!keys[37] &&
+			!keys[13] &&
+			enemy.jump == "endJump" &&
+			!enemy.isAttack &&
+			enemy.lastState != "Death"
+		) {
+			enemy.draw();
+		} else if (enemy.lastState == "Death") {
+			enemy.draw("Death");
+		}
 		var x = enemy.velocity.x;
 		var y = enemy.velocity.y;
 		if (keys[38] && !enemy.isAttack) {
