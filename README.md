@@ -1,4 +1,12 @@
-#final project in dist folder
+# final project in dist folder
+# host: https://tainhu.github.io/Fightting-Game/dist/
+# Guide
+- P1: 
+  - a, w, d -> move
+  - space -> attack
+- P2:
+  - arrow key -> move
+  - enter -> attack
 # Game play screen
 ![image](https://user-images.githubusercontent.com/76104316/190314351-f941e854-e61e-4d1c-9fb8-0c96b30612fa.png)
 ## Fight
